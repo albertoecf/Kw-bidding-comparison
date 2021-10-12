@@ -18,8 +18,8 @@ def readFile(file_path):
 
 
 # SELECCIONAMOS LOS ARCHIVOS DE INTERÉS EN ESTE CASO SON INFORMES EXTRAIDOS DESDE GOOGLE ADS :
-search_path = 'searchTDB.csv'
-dsa_path = 'dsaTDB.csv'
+search_path = 'hogar_search.csv'
+dsa_path = 'hogar_dsa.csv'
 
 # LEEMOS LOS ARCHIVOS Y AGREGAMOS COLUMNA CON NOMBRE ESTRATEGIA
 search = readFile(search_path)
@@ -49,8 +49,8 @@ search_ok['Clics'] = pd.to_numeric(search_ok['Clics'].str.replace(".",""), error
 dsa_ok = dsa.copy()
 dsa_ok['Clics'] = pd.to_numeric(dsa_ok['Clics'].str.replace(".",""), errors="raise")
 
-search_ok = search_ok[search_ok['Clics']>50]
-dsa_ok = dsa_ok[dsa_ok['Clics']>50]
+search_ok = search_ok[search_ok['Clics']>10]
+dsa_ok = dsa_ok[dsa_ok['Clics']>10]
 
 #%%
 
@@ -83,3 +83,4 @@ result = pd.concat(frames).drop(columns=['Añadido/excluido','Tipo de campaña']
 result.head()
 
 #%%
+# %%
